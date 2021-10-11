@@ -2,6 +2,9 @@
 <div class="details">
 			<div class="links clearfix">
 				<ul class="links-menu">
+					<li><a href="#" class="{% if request.resolver_match.url_name == 'все' %}
+							active
+						{% endif %}">все</a></li>
 					{% for i in links_menu %}
 						<li><a href="{{ i.href }}" class="{% if request.resolver_match.url_name == i.href %}
 							active
@@ -85,7 +88,6 @@
 							</div>
 						</a>
 					</div>
-
 				</div>
 			</div>
 		</div>

@@ -1,12 +1,9 @@
 from django.shortcuts import render
-import json
-
+from mainapp.models import StyleCategory
 
 def products(request):
     title = 'Каталог'
-
-    f = open('mainapp\data.json', 'r', encoding='utf8')
-    links_menu = json.load(f)
+    links_menu = StyleCategory.objects.all()
 
     context = {
         'title': title,
