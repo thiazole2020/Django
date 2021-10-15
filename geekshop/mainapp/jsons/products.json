@@ -1,0 +1,52 @@
+[
+  {
+      "category": "Стул",
+      "style_category": "Дом",
+      "name": "УТЕСПЕЛАРЕ",
+      "image": "products_images/product-4.jpg",
+      "short_desc": "Для посидеть",
+      "description": "Мягкий стул",
+      "price": "1000.00",
+      "quantity": 7
+  },
+  {
+      "category": "Диван",
+      "style_category": "Офис",
+      "name": "СТОРЙОРМ",
+      "image": "products_images/product-3-sm.jpg",
+      "short_desc": "Для полежать",
+      "description": "Мягкий диван",
+      "price": "20000.00",
+      "quantity": 10
+  },
+  {
+      "category": "Часы",
+      "style_category": "Модерн",
+      "name": "ПЕППРИГ",
+      "image": "products_images/product-4-sm.jpg",
+      "short_desc": "Для посмотреть время",
+      "description": "Без цифр",
+      "price": "1500.00",
+      "quantity": 5
+    },
+  {
+      "category": "Чайник",
+      "style_category": "Классика",
+      "name": "ХЭЛПА",
+      "image": "products_images/product-3.jpg",
+      "short_desc": "Для покипятить",
+      "description": "объем 3 л",
+      "price": "1500.00",
+      "quantity": 12
+  },
+  {
+      "category": "Лампа",
+      "style_category": "Дом",
+      "name": "СФЕРА",
+      "image": "products_images/product-1.jpg",
+      "short_desc": "Для посветить",
+      "description": "20 Вт",
+      "price": "1500.00",
+      "quantity": 7
+  }
+]
