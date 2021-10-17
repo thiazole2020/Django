@@ -15,16 +15,24 @@
                 {% endif %}">контакты</a></li>
 
     {% if user.is_authenticated %}
-    <li>
-        <a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a>
-    </li>
-	{% endif %}
-    <li>
-    {% if user.is_authenticated %}
-    	<a href="{% url 'auth:logout' %}">выйти</a>
-	{% else %}
-		<a href="{% url 'auth:login' %}">войти</a>
+        <li>
+            <a href="{% url 'auth:edit' %}">{{ user.first_name|default:'Пользователь' }}</a>
+        </li>
+        {% if basket %}
+            <li>
+                <a href="{% url 'basket:view' %}">Корзина</a>
+                <span>
+                    ({{ basket|length }} ед.)
+                </span>
+            </li>
+        {% endif %}
     {% endif %}
+    <li>
+        {% if user.is_authenticated %}
+            <a href="{% url 'auth:logout' %}">выйти</a>
+        {% else %}
+            <a href="{% url 'auth:login' %}">войти</a>
+        {% endif %}
     </li>
 
 </ul>
