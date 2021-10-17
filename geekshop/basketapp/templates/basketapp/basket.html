@@ -1,0 +1,31 @@
+{% extends 'geekshop/base.html' %}
+{% block css %}
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+{% endblock %}
+
+{% block container_content %}
+{% include 'geekshop/includes/hero-white.html' %}
+
+<table class="table">
+  <caption>Корзина</caption>
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Товар</th>
+      <th scope="col">Количество</th>
+      <th scope="col">Стоимость</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% for item in basket %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ item.product.name }}</td>
+      <td>{{ item.quantity }}</td>
+      <td>{{ item.product.price }}</td>
+    </tr>
+  {% endfor %}
+  </tbody>
+</table>
+
+{% endblock %}
