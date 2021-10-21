@@ -1,3 +1,12 @@
+{% extends 'geekshop/base.html' %}
+{% load static %}
+{% block title %} {{ title }} {% endblock %}
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{% static 'mainapp/style.css' %}">
+{% endblock %}
+{% block container_content %}
+		{% include 'geekshop/includes/hero-white.html' %}
+
 {% load static %}
 <div class="details">
 			<div class="links clearfix">
@@ -21,11 +30,10 @@
 				</ul>
 			</div>
 
-			{% if hot_product %}
 			<div class="details-products">
 				<div class="details-slider">
 					<div class="slider-product">
-						<img src="/media/{{ hot_product.image }}">
+						<img src="/media/{{ product.image }}">
 					</div>
 					<div class="slider-control">
 						<div class="block">
@@ -47,41 +55,16 @@
 				</div>
 
 				<div class="description">
-					<h3 class="big-bold">{{ hot_product.name }}</h3>
-					<h3 class="red">горячее предложение</h3>
-					<p class="price">{{ hot_product.price }}<span>руб.</span></p>
-					<a href="{% url 'basket:add' hot_product.pk %}" class="red-button">
+					<h3 class="big-bold">{{ product.name }}</h3>
+					<p style="text-align: center;">{{ product.short_desc }}</p>
+					<h3 class="red"></h3>
+					<p class="price">{{ product.price }}<span>руб.</span></p>
+					<a href="{% url 'basket:add' product.pk %}" class="red-button">
 						заказать <i class="fa fa-chevron-right" aria-hidden="true"></i>
 					</a>
 					<div class="description-text">
-						{{ hot_product.description }}
+						{{ product.description }}
 					</div>
-				</div>
-			</div>
-			{% endif %}
-
-			<div class="products_list">
-				<div class="title clearfix">
-					{% if style_category %}
-					<h2>
-						Категория: "{{ style_category.name|title }}"
-					</h2>
-					{% endif %}
-				</div>
-				<br>
-				<div class="category-products clearfix">
-					{% for product in products %}
-						<div class="block">
-							<a href="{% url 'products:detail' product.pk %}">
-								<img src="/media/{{ product.image }}" alt="product">
-								<div class="text">
-									<img src="{% static 'img/icon-hover.png' %}" alt="hover">
-									<h4>{{ product.name }}</h4>
-									<p>{{ product.description }}</p>
-								</div>
-							</a>
-						</div>
-					{% endfor %}
 				</div>
 			</div>
 
@@ -107,3 +90,5 @@
 			</div>
 			{% endif %}
 		</div>
+
+{% endblock %}
