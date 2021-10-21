@@ -5,9 +5,11 @@ from basketapp.models import Basket
 
 def main(request):
     title = 'Магазин'
+    basket = []
+    if request.user.is_authenticated:
+        basket = Basket.objects.filter(user=request.user)
 
     products = Product.objects.all()[:4]
-    basket = Basket.objects.filter(user=request.user)
 
     context = {
         'title': title,
