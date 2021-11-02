@@ -6,21 +6,21 @@
 }
 
 .details-slider {
-	width: 570px;
+	width: 400px;
 	float: left;
 	margin-right: 30px;
 }
 
 .slider-product {
-	width: 570px;
-	height: 570px;
+	width: 400px;
+	height: 400px;
 }
 
 .slider-control {
-	width: 420px;
+	width: 400px;
 	height: 70px;
 	margin: 11px auto 0px;
-	padding-left: 150px
+	padding-left: 100px
 }
 .slider-control .block {
 	height: 70px;
@@ -43,7 +43,7 @@
 }
 
 .description {
-	width: 535px;
+	width: 490px;
 	float: right;
 	padding-left: 35px
 }
@@ -181,4 +181,8 @@
 }
 .related-products a:hover .text{
 	display: block;
+}
+
+block {
+    width: 300px;
 }

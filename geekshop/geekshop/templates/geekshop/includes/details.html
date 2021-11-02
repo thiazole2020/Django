@@ -68,8 +68,27 @@
 					</h2>
 					{% endif %}
 				</div>
+				<div class="paginator">
+					{% if products.has_previous %}
+						<a href="{% url 'products:page' style_category.pk products.previous_page_number %}">
+							<
+						</a>
+					{% endif %}
+					{% if products.has_previous or products.has_next  %}
+						<span class="current">страница {{ products.number }} из	{{ products.paginator.num_pages }}
+						</span>
+					{% endif %}
+					{% if products.has_next %}
+						<a href="{% url 'products:page' style_category.pk products.next_page_number %}">
+							>
+						</a>
+					{% endif %}
+				</div>
+
+
+
 				<br>
-				<div class="category-products clearfix">
+				<div class="category-products clearfix related-products">
 					{% for product in products %}
 						<div class="block">
 							<a href="{% url 'products:detail' product.pk %}">

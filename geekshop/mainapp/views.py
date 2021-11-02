@@ -1,3 +1,4 @@
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.shortcuts import render, get_object_or_404
 from mainapp.models import StyleCategory, Product
 from basketapp.models import Basket
@@ -20,26 +21,36 @@ def get_same_products(hot_product):
     return same_products
 
 
-def products(request, pk=None):
+def products(request, pk=None, page=1):
     title = 'Каталог'
     links_menu = StyleCategory.objects.all()
-
-    products = Product.objects.all().order_by('price')
     basket = get_basket(request.user)
-
 
     if pk is not None:
         if pk == 0:
-            style_category = {'name': 'все'}
+            style_category = {"pk": 0, 'name': 'все'}
+            products = Product.objects.filter(is_active=True, style_category__is_active=True).order_by('price')
         else:
             style_category = get_object_or_404(StyleCategory, pk=pk)
-            products = Product.objects.filter(style_category__pk=pk).order_by('price')
+            products = Product.objects.filter(
+                style_category__pk=pk,
+                is_active=True,
+                style_category__is_active=True
+            ).order_by('price')
+
+        paginator = Paginator(products, 3)
+        try:
+            products_paginator = paginator.page(page)
+        except PageNotAnInteger:
+            products_paginator = paginator.page(1)
+        except EmptyPage:
+            products_paginator = paginator.page(paginator.num_pages)
 
         context = {
             'title': title,
             'links_menu': links_menu,
             'style_category': style_category,
-            'products': products,
+            'products': products_paginator,
             'basket': basket,
         }
 
@@ -47,6 +58,7 @@ def products(request, pk=None):
 
     hot_product = get_hot_product()
     same_products = get_same_products(hot_product)
+    products = Product.objects.filter(is_active=True, style_category__is_active=True).order_by('price')
 
     context = {
         'title': title,
