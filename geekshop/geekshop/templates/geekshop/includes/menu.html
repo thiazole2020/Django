@@ -31,11 +31,13 @@
                     <li><a class="dropdown-item" href="{% url 'basket:view' %}">Корзина</a>
                     </li>
                 {% endif %}
-                    <li>
-                        {% if user.is_authenticated %}
-                            <a href="{% url 'auth:logout' %}">выйти</a>
-                        {% endif %}
+                    <li><a class="dropdown-item" href="{% url 'orders:main' %}">Заказы</a>
                     </li>
+                <li>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'auth:logout' %}">выйти</a>
+                    {% endif %}
+                </li>
             </ul>
 
             {% if basket %}
