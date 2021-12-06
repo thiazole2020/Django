@@ -5,7 +5,7 @@ from django.template.loader import render_to_string
 from django.urls import reverse
 from mainapp.models import Product
 from django.contrib.auth.decorators import login_required
-
+from django.db.models import F, Q
 
 @login_required
 def basket(request):
@@ -27,6 +27,8 @@ def basket_add(request, pk):
 
     if not basket:
         basket = Basket(user=request.user, product=product)
+
+    # Product.objects.filter(Q(category__name='офис') | Q(category__name='дом'))
 
     basket.quantity += 1
     basket.save()
